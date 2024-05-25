@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using DotnetMirror.SQLDBWebApplication.Models;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using DotnetMirror.SQLDBWebApplication.Data;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Data;
 
-namespace DotnetMirror.SQLDBWebApplication.Data
+namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
 {
     public class DAL : IDAL
     {

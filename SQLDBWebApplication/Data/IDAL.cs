@@ -1,6 +1,6 @@
-﻿using DotnetMirror.SQLDBWebApplication.Models;
+﻿using DotnetMirror.ASPNETCORESQLDBWebApplication.Models;
 
-namespace DotnetMirror.SQLDBWebApplication.Data
+namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
 {
     public interface IDAL
     {

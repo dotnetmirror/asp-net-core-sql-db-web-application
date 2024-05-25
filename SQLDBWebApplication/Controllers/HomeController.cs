@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using DotnetMirror.SQLDBWebApplication.Models;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Models;
 using System.Diagnostics;
 
-namespace SQLDBWebApplication.Controllers
+namespace ASPNETCORESQLDBWebApplication.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,4 +1,4 @@
-namespace DotnetMirror.SQLDBWebApplication.Models
+namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Models
 {
     public class ErrorViewModel
     {

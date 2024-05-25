@@ -1,24 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using DotnetMirror.SQLDBWebApplication.Data;
-using DotnetMirror.SQLDBWebApplication.Models;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Data;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Models;
 using System.Runtime.ConstrainedExecution;
 
-namespace DotnetMirror.SQLDBWebApplication.Controllers
+namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Controllers
 {
     public class CertController : Controller
     {
-        private DAL _data;
-        private readonly IDistributedCache _cache;
+        private IDAL _data;
 
-        public CertController(IDAL context, IDistributedCache cache)
+        public CertController(IDAL context)
         {
-            _data = new DAL();
-            _cache = cache;
+            _data = context;
         }
 
-        // GET: CertController1
+        // GET: CertController
         public ActionResult Index()
         {
 
@@ -33,7 +31,7 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
 
         }
 
-        // GET: CertController1/Details/5
+        // GET: CertController/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -44,13 +42,13 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
             return View(cert);
         }
 
-        // GET: CertController1/Create
+        // GET: CertController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CertController1/Create
+        // POST: CertController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind("Code,Description,ExamDate")] Cert cert)
@@ -59,7 +57,7 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                 _data.Save(cert);
+                    _data.Save(cert);
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -71,18 +69,18 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
             }
         }
 
-        // GET: CertController1/Edit/5
+        // GET: CertController/Edit/5
         public ActionResult Edit(string? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-           var  cert = _data.GetCertfication(id.ToString());
+            var cert = _data.GetCertfication(id.ToString());
             return View(cert);
         }
 
-        // POST: CertController1/Edit/5
+        // POST: CertController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, IFormCollection collection)
@@ -97,7 +95,7 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
             }
         }
 
-        // GET: CertController1/Delete/5
+        // GET: CertController/Delete/5
         public ActionResult Delete(string? id)
         {
             if (id == null)
@@ -105,13 +103,13 @@ namespace DotnetMirror.SQLDBWebApplication.Controllers
                 return NotFound();
             }
 
-             _data.Delete(id.ToString());
+            _data.Delete(id.ToString());
 
 
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: CertController1/Delete/5
+        // POST: CertController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

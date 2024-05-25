@@ -1,4 +1,4 @@
-using DotnetMirror.SQLDBWebApplication.Data;
+using DotnetMirror.ASPNETCORESQLDBWebApplication.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +27,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
-    name: "default1",
+    name: "cert",
     pattern: "{controller=Cert}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace DotnetMirror.SQLDBWebApplication.Models
+namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Models
 {
     public class Cert
     {
