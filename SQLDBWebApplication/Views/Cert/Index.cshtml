@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DotnetMirror.SQLDBWebApplication.Models.Cert>
+
+@{
+    ViewData["Title"] = "Certifications";
+}
+
+
+<h1>Certifications</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Code }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
