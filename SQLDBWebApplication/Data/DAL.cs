@@ -13,7 +13,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
         {
             using (SqlConnection objCon = new SqlConnection(GetConString()))
             {
-                string objc = "select Code,[Name],ExamDate from Certificatoins";
+                string objc = "select Code,[Name],ExamDate from Certification";
                 SqlCommand objCmd = new SqlCommand();
                 objCmd.CommandText = objc;
                 objCmd.Connection = objCon;
@@ -38,7 +38,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
         public void Save(Cert cert)
         {
             // Query to be executed
-            string query = "Insert Into [Certificatoins] (Code,[Name],ExamDate) " +
+            string query = "Insert Into [Certification] (Code,[Name],ExamDate) " +
                                "VALUES (@code, @desc, @examdt) ";
 
             // instance connection and command
@@ -60,7 +60,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
         public void Delete(string code)
         {
             // Query to be executed
-            string query = "Delete from [Certificatoins] where code=@code";
+            string query = "Delete from [Certification] where code=@code";
 
             // instance connection and command
             using (SqlConnection cn = new SqlConnection(GetConString()))
@@ -80,7 +80,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
         {
             using (SqlConnection objCon = new SqlConnection(GetConString()))
             {
-                string objc = "select Code,[Name],ExamDate from Certificatoins where code=@code";
+                string objc = "select Code,[Name],ExamDate from Certification where code=@code";
 
              
               
@@ -112,7 +112,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
             var builder = new ConfigurationBuilder();
 
             builder.AddJsonFile("appsettings.json");
-
+            builder.AddEnvironmentVariables();
             IConfiguration configuration = builder.Build();
             string _connstr = configuration.GetConnectionString("conStr");
 
