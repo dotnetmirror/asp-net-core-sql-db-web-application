@@ -83,11 +83,17 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Controllers
         // POST: CertController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id, IFormCollection collection)
+        public ActionResult Edit([Bind("Code,Description,ExamDate")] Cert cert)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _data.Update(cert);
+
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(cert);
             }
             catch
             {

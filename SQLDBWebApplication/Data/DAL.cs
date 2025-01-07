@@ -49,7 +49,30 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
                 cmd.Parameters.Add("@code", System.Data.SqlDbType.NVarChar, 10).Value = cert.Code;
                 cmd.Parameters.Add("@desc", System.Data.SqlDbType.NVarChar, 500).Value = cert.Description;
                 cmd.Parameters.Add("@examdt", System.Data.SqlDbType.Date).Value = cert.ExamDate;
-                
+
+
+                // open connection, execute command and close connection
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+
+        public void Update(Cert cert)
+        {
+            // Query to be executed
+            string query = "update Certification set name=@desc, ExamDate=@examdt where code=@code";
+
+
+            // instance connection and command
+            using (SqlConnection cn = new SqlConnection(GetConString()))
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                // add parameters and their values
+                cmd.Parameters.Add("@code", System.Data.SqlDbType.NVarChar, 10).Value = cert.Code;
+                cmd.Parameters.Add("@desc", System.Data.SqlDbType.NVarChar, 500).Value = cert.Description;
+                cmd.Parameters.Add("@examdt", System.Data.SqlDbType.Date).Value = cert.ExamDate;
+
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -68,7 +91,7 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
             {
                 // add parameters and their values
                 cmd.Parameters.Add("@code", System.Data.SqlDbType.NVarChar, 10).Value = code;
-               
+
                 // open connection, execute command and close connection
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -82,15 +105,15 @@ namespace DotnetMirror.ASPNETCORESQLDBWebApplication.Data
             {
                 string objc = "select Code,[Name],ExamDate from Certification where code=@code";
 
-             
-              
+
+
 
                 SqlCommand objCmd = new SqlCommand();
                 objCmd.Parameters.AddWithValue("@code", id);
                 objCmd.CommandText = objc;
                 objCmd.Connection = objCon;
 
-                
+
                 SqlDataAdapter da = new SqlDataAdapter(objCmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
